@@ -63,3 +63,7 @@ val Platform.deviceInfo: String
         return result
     }
 
+
+expect class Logger() {
+     fun log(data: String)
+}

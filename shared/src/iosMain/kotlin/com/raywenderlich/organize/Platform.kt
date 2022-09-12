@@ -51,17 +51,15 @@ import platform.posix.uname
 import platform.posix.utsname
 
 actual class Platform actual constructor() {
-    //1
+
     actual val osName = when (UIDevice.currentDevice.userInterfaceIdiom) {
         UIUserInterfaceIdiomPhone -> "iOS"
         UIUserInterfaceIdiomPad -> "iPadOS"
         else -> kotlin.native.Platform.osFamily.name
     }
 
-    //2
     actual val osVersion = UIDevice.currentDevice.systemVersion
 
-    //3
     actual val deviceModel: String
         get() {
             memScoped {
@@ -72,21 +70,23 @@ actual class Platform actual constructor() {
             }
         }
 
-    //4
     actual val cpuType = kotlin.native.Platform.cpuArchitecture.name
 
-    //5
     actual val screen: ScreenInfo? = ScreenInfo()
 
-    //6
     actual fun logSystemInfo() {
         NSLog(deviceInfo)
     }
 }
 
 actual class ScreenInfo actual constructor() {
-    //7
     actual val width = CGRectGetWidth(UIScreen.mainScreen.nativeBounds).toInt()
     actual val height = CGRectGetHeight(UIScreen.mainScreen.nativeBounds).toInt()
     actual val density = UIScreen.mainScreen.scale.toInt()
+}
+
+actual class Logger actual constructor() {
+    actual fun log(data: String) {
+        NSLog(data)
+    }
 }
