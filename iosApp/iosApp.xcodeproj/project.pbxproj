@@ -14,6 +14,9 @@
 		30712C382738396700AAC53F /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30712C372738396700AAC53F /* AboutView.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		E716AF1F28CFA11200FE36F6 /* AboutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716AF1E28CFA11200FE36F6 /* AboutListView.swift */; };
+		E716AF2128CFCE5800FE36F6 /* RemindersViewModelWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716AF2028CFCE5800FE36F6 /* RemindersViewModelWrapper.swift */; };
+		E716AF2428CFD02400FE36F6 /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716AF2228CFD02400FE36F6 /* ReminderItem.swift */; };
+		E716AF2528CFD02400FE36F6 /* NewReminderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716AF2328CFD02400FE36F6 /* NewReminderTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +42,9 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E716AF1E28CFA11200FE36F6 /* AboutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutListView.swift; sourceTree = "<group>"; };
+		E716AF2028CFCE5800FE36F6 /* RemindersViewModelWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemindersViewModelWrapper.swift; path = "../../../../../../../kmpf-materials/07-app-architecture/projects/final/iosApp/iosApp/UI/Reminders/RemindersViewModelWrapper.swift"; sourceTree = "<group>"; };
+		E716AF2228CFD02400FE36F6 /* ReminderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReminderItem.swift; path = "../../../../../../../kmpf-materials/07-app-architecture/projects/final/iosApp/iosApp/UI/Reminders/ReminderItem.swift"; sourceTree = "<group>"; };
+		E716AF2328CFD02400FE36F6 /* NewReminderTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewReminderTextField.swift; path = "../../../../../../../kmpf-materials/07-app-architecture/projects/final/iosApp/iosApp/UI/Reminders/NewReminderTextField.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +90,10 @@
 		30712C2E2738374F00AAC53F /* Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				E716AF2328CFD02400FE36F6 /* NewReminderTextField.swift */,
+				E716AF2228CFD02400FE36F6 /* ReminderItem.swift */,
 				30712C352738394D00AAC53F /* RemindersView.swift */,
+				E716AF2028CFCE5800FE36F6 /* RemindersViewModelWrapper.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -237,10 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E716AF2128CFCE5800FE36F6 /* RemindersViewModelWrapper.swift in Sources */,
 				30712C382738396700AAC53F /* AboutView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				E716AF1F28CFA11200FE36F6 /* AboutListView.swift in Sources */,
+				E716AF2428CFD02400FE36F6 /* ReminderItem.swift in Sources */,
+				E716AF2528CFD02400FE36F6 /* NewReminderTextField.swift in Sources */,
 				30712C362738394D00AAC53F /* RemindersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,14 +33,44 @@
 import SwiftUI
 
 struct RemindersView: View {
-  var body: some View {
-    Text("Hello World!")
-      .navigationTitle("Reminders")
-  }
-}
+  //1
+  @StateObject private var viewModelWrapper = RemindersViewModelWrapper()
 
-struct RemindersView_Previews: PreviewProvider {
-  static var previews: some View {
-    RemindersView()
+  //2
+  @State private var textFieldValue = ""
+
+  var body: some View {
+    //3
+    List {
+      //4
+      if !viewModelWrapper.reminders.isEmpty {
+        Section {
+          ForEach(viewModelWrapper.reminders, id: \.id) { item in
+            //5
+            ReminderItem(title: item.title, isCompleted: item.isCompleted)
+              .onTapGesture {
+                //6
+                withAnimation {
+                  viewModelWrapper.viewModel.markReminder(
+                    id: item.id,
+                    isCompleted: !item.isCompleted
+                  )
+                }
+              }
+          }
+        }
+      }
+
+      //7
+      Section {
+        NewReminderTextField(text: $textFieldValue) {
+          withAnimation {
+            viewModelWrapper.viewModel.createReminder(title: textFieldValue)
+            textFieldValue = ""
+          }
+        }
+      }
+    }
+    .navigationTitle("Reminders")
   }
 }
