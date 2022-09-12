@@ -33,47 +33,12 @@
 import SwiftUI
 import shared
 
-private struct RowItem: Hashable {
-  let title: String
-  let subtitle: String
-}
 
 struct AboutListView: View {
   
-  
-  private let items: [RowItem] = {
-    let platform = Platform()
-    var result: [RowItem] = [
-      .init(
-        title: "Operating System",
-        subtitle: "\(platform.osName) \(platform.osVersion)"
-      ),
-      .init(
-        title: "Device",
-        subtitle: platform.deviceModel
-      ),
-      .init(
-        title: "CPU",
-        subtitle: platform.cpuType
-      )
-    ]
 
-    //3
-    if let screen = platform.screen {
-      let width = min(screen.width, screen.height)
-      let height = max(screen.width, screen.height)
+   let items: [AboutViewModel.RowItem]
 
-      result.append(
-        .init(
-          title: "Display",
-          subtitle: "\(width)×\(height) @\(screen.density)x"
-        )
-      )
-    }
-
-    //4
-    return result
-  }()
   
   
   var body: some View {
@@ -95,6 +60,6 @@ struct AboutListView: View {
 
 struct AboutListView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutListView()
+      AboutListView(items: [AboutViewModel.RowItem(title: "Title", subtitle: "Subtitle")])
     }
 }

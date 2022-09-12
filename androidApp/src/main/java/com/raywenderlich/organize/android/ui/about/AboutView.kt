@@ -50,16 +50,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.raywenderlich.organize.Platform
+import com.raywenderlich.organize.presentation.AboutViewModel
 import kotlin.math.max
 import kotlin.math.min
 
 @Composable
 fun AboutView(
+  viewModel: AboutViewModel = AboutViewModel(),
   onUpButtonClick: () -> Unit
 ) {
   Column {
     Toolbar(onUpButtonClick = onUpButtonClick)
-    ContentView()
+    ContentView(items = viewModel.items)
   }
 }
 
@@ -81,39 +83,37 @@ private fun Toolbar(
 }
 
 @Composable
-private fun ContentView() {
-  val items = makeItems()
-
+private fun ContentView(items: List<AboutViewModel.RowItem>) {
   LazyColumn(
     modifier = Modifier.fillMaxSize(),
   ) {
     items(items) { row ->
-      RowView(title = row.first, subtitle = row.second)
+      RowView(title = row.title, subtitle = row.subtitle)
     }
   }
 }
 
-private fun makeItems(): List<Pair<String, String>> {
-  //1
-  val platform = Platform()
-
-  //2
-  val items = mutableListOf(
-    Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
-    Pair("Device", platform.deviceModel),
-    Pair("CPU", platform.cpuType)
-  )
-
-  //3
-  platform.screen?.let {
-    val max = max(it.width, it.height)
-    val min = min(it.width, it.height)
-
-    items.add(Pair("Display", "${max}×${min} @${it.density}x"))
-  }
-
-  return items
-}
+//private fun makeItems(): List<Pair<String, String>> {
+//  //1
+//  val platform = Platform()
+//
+//  //2
+//  val items = mutableListOf(
+//    Pair("Operating System", "${platform.osName} ${platform.osVersion}"),
+//    Pair("Device", platform.deviceModel),
+//    Pair("CPU", platform.cpuType)
+//  )
+//
+//  //3
+//  platform.screen?.let {
+//    val max = max(it.width, it.height)
+//    val min = min(it.width, it.height)
+//
+//    items.add(Pair("Display", "${max}×${min} @${it.density}x"))
+//  }
+//
+//  return items
+//}
 
 
 @Composable
